@@ -1,0 +1,13 @@
+---
+#used for reference
+#http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_3083_x64.tar.bz2
+
+sublimetext_url_source: https://download.sublimetext.com
+pkg_control_url: https://packagecontrol.io/Package%20Control.sublime-package
+sublimetext_home_dir: "/opt/sublime_text_3"
+sublimetext_symlink_dir: "/opt/sublime_text"
+sublimetext_build: 3103
+sublimetext_arch: x64
+sublimetext_url: "{{ sublimetext_url_source }}/sublime_text_3_build_{{ sublimetext_build }}_{{ sublimetext_arch }}.tar.bz2"
+icon_dir: /usr/share/icons/hicolor
+applications_dir: "/usr/share/applications"

@@ -1,0 +1,25 @@
+---
+
+- name: Download sublimetext's tar file
+  get_url: url={{ sublimetext_url }} dest=/tmp validate_certs=no
+
+- name: Extract the tar file 
+  unarchive: src=/tmp/sublime_text_3_build_{{ sublimetext_build }}_{{ sublimetext_arch }}.tar.bz2 dest=/opt copy=no
+
+- name: Symlink to Base Directory
+  file: src={{ sublimetext_home_dir }} dest={{ sublimetext_symlink_dir }} state=link
+
+- name: Symlink for Desktop Entry
+  file: src={{ sublimetext_home_dir }}/sublime_text.desktop dest={{ applications_dir }}/sublime_text.desktop state=link
+
+- name: Symlinks for icons
+  file: src={{ sublimetext_home_dir }}/{{ item.src }} dest={{ icon_dir }}/{{ item.dest }} state=link
+  with_items:
+    - { src: 'Icon/16x16/sublime-text.png', dest: '16x16/apps/sublime-text.png'  }
+    - { src: 'Icon/32x32/sublime-text.png', dest: '32x32/apps/sublime-text.png'  }
+    - { src: 'Icon/48x48/sublime-text.png', dest: '48x48/apps/sublime-text.png' }
+    - { src: 'Icon/128x128/sublime-text.png', dest: '128x128/apps/sublime-text.png' }
+    - { src: 'Icon/256x256/sublime-text.png', dest: '256x256/apps/sublime-text.png' }
+
+- name: Update the GTK Icon cache
+  command: /usr/bin/gtk-update-icon-cache {{ icon_dir }}

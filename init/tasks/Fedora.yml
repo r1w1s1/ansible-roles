@@ -1,0 +1,9 @@
+---
+
+- name: upgrade all packages
+  dnf: name=* state=latest
+  tags: pkg_upgrade
+  
+- name: Disable SELinux
+  selinux: state=disabled
+  tags: selinux

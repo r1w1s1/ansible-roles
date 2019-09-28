@@ -1,0 +1,7 @@
+---
+# defaults file for sftp-server
+
+sftp_group: sftpusers
+sftp_users: test
+## python -c 'import crypt; print crypt.crypt("123456", "$1$SomeSalt$")'
+pass: $1$ChwuF/kz$T9VFRaO.rgFU./KcPecSe/

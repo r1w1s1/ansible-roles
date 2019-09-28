@@ -1,0 +1,14 @@
+---
+
+packages_base:
+  - vim
+  - git
+  - net-tools
+  - traceroute
+  - mc
+  - links
+  - epel-release
+
+packages_python:
+  - python-devel
+  - python-pip

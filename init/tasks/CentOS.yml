@@ -1,0 +1,14 @@
+---
+
+- name: Install Packages
+  yum: name={{ item }} state=latest
+  with_items:
+     - "{{ packages_base }}"
+
+- name: Upgrade all packages
+  yum: name=* state=latest
+  tags: pkg_upgrade
+
+- name: Disable SELinux
+  selinux: state=disabled
+  tags: selinux

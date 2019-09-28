@@ -1,0 +1,7 @@
+---
+- hosts: vagrant
+  sudo: true
+  #vars_files:
+  #  - vars/common.yml
+  roles:
+    - ansible-role-init

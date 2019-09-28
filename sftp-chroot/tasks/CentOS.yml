@@ -1,0 +1,18 @@
+---
+# tasks file for sftp-server
+
+- name: Mount home 
+  mount: name=/chroot/home src=/home opts=bind fstype=ext4 state=mounted
+
+- name: SFTP-Server Group
+  group: name={{ sftp_group }} state=present
+  tags: sftp_group
+
+- name: Creating the users
+  user: name={{ sftp_users }} shell=/sbin/nologin group={{ sftp_group }} password={{ pass }}
+  tags: sftp_users
+
+- name: Copy sshd_config template 
+  template: src=sshd_config.j2 dest=/etc/ssh/sshd_config
+  notify: Restart sftp-server
+  tags: sshd_config_changes
